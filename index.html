@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo Marinho - Uma Aventura no Fundo do Mar!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Estilos gerais */
         * {
@@ -23,126 +24,154 @@
         /* Cabeçalho */
         header {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             background-color: rgba(255, 255, 255, 0.2);
-            border-bottom: 5px solid #ffcc00;
+            border-bottom: 8px solid #ffcc00;
             position: relative;
             overflow: hidden;
         }
         
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffcc00, #ff9900);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            box-shadow: 0 0 20px #ffcc00;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        .logo i {
+            font-size: 4rem;
+            color: #fff;
+        }
+        
         h1 {
-            font-size: 3.5rem;
-            text-shadow: 3px 3px 0 #ff6600, 6px 6px 0 #ffcc00;
-            margin-bottom: 10px;
+            font-size: 4.5rem;
+            text-shadow: 4px 4px 0 #ff6600, 8px 8px 0 #ffcc00;
+            margin-bottom: 15px;
             animation: bounce 2s infinite alternate;
         }
         
         .subtitle {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             color: #ffcc00;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         /* Conteúdo principal */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 30px;
         }
         
         .intro {
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-            line-height: 1.6;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 20px;
-            border: 3px dashed #ffcc00;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            line-height: 1.8;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 30px;
+            border: 5px dashed #ffcc00;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         /* Seção de animais */
         .animals-section {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
         }
         
         .animal-card {
             background: linear-gradient(to bottom right, #4ecdc4, #44a08d);
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 25px;
+            padding: 30px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 4px solid #ffcc00;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 6px solid #ffcc00;
             position: relative;
             overflow: hidden;
         }
         
         .animal-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
         
         .animal-icon {
-            font-size: 5rem;
-            margin-bottom: 15px;
+            font-size: 7rem;
+            margin-bottom: 20px;
             display: block;
+            filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.2));
         }
         
         .animal-name {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 15px;
             color: #ffcc00;
-            text-shadow: 2px 2px 0 #ff6600;
+            text-shadow: 3px 3px 0 #ff6600;
         }
         
         .animal-fact {
-            font-size: 1.3rem;
-            line-height: 1.5;
+            font-size: 2rem;
+            line-height: 1.6;
         }
         
         /* Seção de modelos 3D */
         .models-section {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 35px;
+            margin-bottom: 50px;
         }
         
         .model-card {
             background: linear-gradient(to bottom right, #ff9966, #ff5e62);
-            border-radius: 20px;
-            padding: 15px;
+            border-radius: 25px;
+            padding: 25px;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 4px solid #ffcc00;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s, box-shadow 0.4s;
+            border: 6px solid #ffcc00;
             position: relative;
             overflow: hidden;
         }
         
         .model-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
         }
         
         .model-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: #ffcc00;
-            text-shadow: 2px 2px 0 #ff6600;
+            text-shadow: 3px 3px 0 #ff6600;
         }
         
         .model-container {
             position: relative;
             width: 100%;
-            height: 250px;
-            border-radius: 15px;
+            height: 300px;
+            border-radius: 20px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            border: 4px solid #fff;
         }
         
         .model-container iframe {
@@ -154,65 +183,72 @@
         /* Seção do vídeo */
         .video-section {
             text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            margin: 50px 0;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         .video-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
             color: #ffcc00;
-            text-shadow: 2px 2px 0 #ff6600;
+            text-shadow: 3px 3px 0 #ff6600;
         }
         
         .video-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border: 5px solid #ffcc00;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 8px solid #ffcc00;
         }
         
         .video-container iframe {
             width: 100%;
-            height: 450px;
+            height: 500px;
             border: none;
         }
         
         /* Rodapé */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3);
-            margin-top: 40px;
-            border-top: 5px solid #ffcc00;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.4);
+            margin-top: 50px;
+            border-top: 8px solid #ffcc00;
         }
         
         footer p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .creator-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         /* Animações */
         @keyframes bounce {
             0% { transform: translateY(0); }
-            100% { transform: translateY(-15px); }
+            100% { transform: translateY(-20px); }
         }
         
         @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
         
         @keyframes swim {
-            0% { transform: translateX(-100px); }
-            100% { transform: translateX(calc(100vw + 100px)); }
+            0% { transform: translateX(-150px); }
+            100% { transform: translateX(calc(100vw + 150px)); }
         }
         
         @keyframes popup {
@@ -221,57 +257,106 @@
             100% { transform: scale(1); opacity: 1; }
         }
         
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px #ffcc00; }
+            100% { transform: scale(1.05); box-shadow: 0 0 30px #ffcc00, 0 0 40px #ff9900; }
+        }
+        
+        @keyframes bubble-rise {
+            0% { 
+                transform: translateY(100vh) scale(0.5); 
+                opacity: 0.7;
+            }
+            100% { 
+                transform: translateY(-100px) scale(1.2); 
+                opacity: 0;
+            }
+        }
+        
         /* Elementos decorativos */
         .bubble {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.3);
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
             border-radius: 50%;
-            animation: float 5s infinite ease-in-out;
+            animation: float 6s infinite ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .bubble-effect {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+            pointer-events: none;
+            z-index: 1000;
+            animation: bubble-rise linear forwards;
         }
         
         .fish {
             position: absolute;
-            font-size: 2rem;
-            animation: swim 15s linear infinite;
+            font-size: 3rem;
+            animation: swim 20s linear infinite;
+            filter: drop-shadow(3px 3px 2px rgba(0,0,0,0.3));
         }
         
         /* Botões interativos */
         .interactive-btn {
-            background-color: #ff6600;
+            background: linear-gradient(to bottom, #ff6600, #ff8533);
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            border-radius: 50px;
+            padding: 20px 40px;
+            font-size: 2.2rem;
+            border-radius: 60px;
             cursor: pointer;
-            margin: 10px;
+            margin: 15px;
             transition: all 0.3s;
-            box-shadow: 0 5px 0 #cc5200;
+            box-shadow: 0 8px 0 #cc5200, 0 15px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
         
         .interactive-btn:hover {
-            background-color: #ff8533;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 0 #cc5200;
+            background: linear-gradient(to bottom, #ff8533, #ff6600);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 0 #cc5200, 0 20px 25px rgba(0, 0, 0, 0.4);
         }
         
         .interactive-btn:active {
             transform: translateY(0);
-            box-shadow: 0 5px 0 #cc5200;
+            box-shadow: 0 8px 0 #cc5200, 0 10px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .interactive-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .interactive-btn:hover::after {
+            left: 100%;
         }
         
         /* Modelo 3D fixo no canto */
         .fixed-model {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 200px;
-            height: 200px;
+            bottom: 25px;
+            right: 25px;
+            width: 220px;
+            height: 220px;
             z-index: 100;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            border: 3px solid #ffcc00;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            border: 5px solid #ffcc00;
+            transition: transform 0.3s;
+        }
+        
+        .fixed-model:hover {
+            transform: scale(1.05);
         }
         
         .fixed-model iframe {
@@ -282,16 +367,17 @@
         
         .name-tag {
             position: absolute;
-            bottom: -25px;
+            bottom: -35px;
             left: 0;
             right: 0;
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 5px;
-            font-size: 1rem;
-            border-radius: 5px;
+            padding: 8px;
+            font-size: 1.5rem;
+            border-radius: 8px;
             font-family: 'Minecraft', monospace;
+            border: 2px solid #ffcc00;
         }
         
         /* Popup de bolha animada */
@@ -300,11 +386,14 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             z-index: 1000;
-            animation: popup 0.5s forwards;
+            animation: popup 0.6s forwards;
             display: none;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
         }
         
         .bubble-popup iframe {
@@ -313,26 +402,62 @@
             border: none;
         }
         
+        /* Ícones personalizados */
+        .custom-icon {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: float 4s infinite ease-in-out;
+        }
+        
+        .custom-icon::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        .custom-icon.fish {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+        
+        .custom-icon.seashell {
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+        }
+        
         /* Responsividade */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
             .subtitle {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
             
             .animal-card, .model-card {
-                padding: 15px;
+                padding: 20px;
             }
             
             .animal-icon {
-                font-size: 4rem;
+                font-size: 5rem;
             }
             
             .animal-name, .model-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
+            }
+            
+            .animal-fact {
+                font-size: 1.6rem;
             }
             
             .video-container iframe {
@@ -340,36 +465,40 @@
             }
             
             .fixed-model {
-                width: 150px;
-                height: 150px;
-                bottom: 10px;
-                right: 10px;
+                width: 160px;
+                height: 160px;
+                bottom: 15px;
+                right: 15px;
             }
             
-            .models-section {
+            .models-section, .animals-section {
                 grid-template-columns: 1fr;
+            }
+            
+            .intro {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Áudio de fundo -->
-    <audio id="background-music" loop autoplay>
+    <audio id="background-music" loop>
         <source src="eletiva.mp3" type="audio/mpeg">
         Seu navegador não suporta o elemento de áudio.
     </audio>
     
     <!-- Bolhas decorativas -->
-    <div class="bubble" style="width: 40px; height: 40px; top: 10%; left: 5%; animation-delay: 0s;"></div>
-    <div class="bubble" style="width: 60px; height: 60px; top: 20%; left: 80%; animation-delay: 1s;"></div>
-    <div class="bubble" style="width: 30px; height: 30px; top: 40%; left: 15%; animation-delay: 2s;"></div>
-    <div class="bubble" style="width: 50px; height: 50px; top: 60%; left: 70%; animation-delay: 3s;"></div>
-    <div class="bubble" style="width: 35px; height: 35px; top: 80%; left: 25%; animation-delay: 4s;"></div>
+    <div class="bubble" style="width: 60px; height: 60px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 80px; height: 80px; top: 20%; left: 80%; animation-delay: 1s;"></div>
+    <div class="bubble" style="width: 40px; height: 40px; top: 40%; left: 15%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 70px; height: 70px; top: 60%; left: 70%; animation-delay: 3s;"></div>
+    <div class="bubble" style="width: 50px; height: 50px; top: 80%; left: 25%; animation-delay: 4s;"></div>
     
     <!-- Peixes nadando -->
     <div class="fish" style="top: 15%; animation-delay: 0s;">🐠</div>
-    <div class="fish" style="top: 35%; animation-delay: 5s;">🐟</div>
-    <div class="fish" style="top: 65%; animation-delay: 10s;">🐡</div>
+    <div class="fish" style="top: 35%; animation-delay: 7s;">🐟</div>
+    <div class="fish" style="top: 65%; animation-delay: 14s;">🐡</div>
     
     <!-- Popup de bolha animada -->
     <div class="bubble-popup" id="bubblePopup">
@@ -383,15 +512,26 @@
     </div>
     
     <header>
-        <h1>Mundo Marinho</h1>
-        <p class="subtitle">Uma Aventura no Fundo do Mar!</p>
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-fish"></i>
+            </div>
+            <div>
+                <h1>Mundo Marinho</h1>
+                <p class="subtitle">Uma Aventura no Fundo do Mar!</p>
+            </div>
+        </div>
     </header>
     
     <div class="container">
         <section class="intro">
             <p>Olá, amiguinho! Vamos mergulhar juntos no incrível mundo dos animais marinhos!</p>
             <p>Aqui no fundo do mar existem criaturas mágicas, coloridas e muito interessantes!</p>
-            <button class="interactive-btn" onclick="toggleMusic()">🎵 Ligar/Desligar Música</button>
+            <div style="margin-top: 20px;">
+                <button class="interactive-btn" onclick="toggleMusic()">
+                    <i class="fas fa-music"></i> Ligar/Desligar Música
+                </button>
+            </div>
         </section>
         
         <section class="animals-section">
@@ -433,14 +573,14 @@
         </section>
         
         <section>
-            <h2 style="text-align: center; font-size: 2.5rem; color: #ffcc00; margin: 40px 0 20px; text-shadow: 2px 2px 0 #ff6600;">Nossos Amigos em 3D!</h2>
+            <h2 style="text-align: center; font-size: 3.5rem; color: #ffcc00; margin: 50px 0 30px; text-shadow: 3px 3px 0 #ff6600;">Nossos Amigos em 3D!</h2>
             <div class="models-section">
                 <div class="model-card">
                     <h3 class="model-title">Tubarão Fofinho</h3>
                     <div class="model-container">
                         <iframe title="Plushie Shark" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/875414d5e45c42f9a5323ba8a8beed19/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
                     </div>
-                    <p>Olha que tubarão fofinho! Ele parece um bichinho de pelúcia!</p>
+                    <p style="font-size: 1.8rem;">Olha que tubarão fofinho! Ele parece um bichinho de pelúcia!</p>
                 </div>
                 
                 <div class="model-card">
@@ -448,7 +588,7 @@
                     <div class="model-container">
                         <iframe title="SharkBite 2's Orca" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/8e88a7578a364647a0a89c7746f560ca/embed?autostart=1&preload=1&transparent=1"></iframe>
                     </div>
-                    <p>Essa orca é super amigável! Ela adora brincar com seus amigos!</p>
+                    <p style="font-size: 1.8rem;">Essa orca é super amigável! Ela adora brincar com seus amigos!</p>
                 </div>
                 
                 <div class="model-card">
@@ -456,7 +596,7 @@
                     <div class="model-container">
                         <iframe title="arraia manta" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/0604ee993d664d0c9773ec49532bd121/embed?autostart=1&preload=1&transparent=1"></iframe>
                     </div>
-                    <p>A arraia parece que está voando na água! Que elegante!</p>
+                    <p style="font-size: 1.8rem;">A arraia parece que está voando na água! Que elegante!</p>
                 </div>
                 
                 <div class="model-card">
@@ -464,7 +604,7 @@
                     <div class="model-container">
                         <iframe title="Corals and Treasures" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/76c581a94313411ca6012455853f2f97/embed?autostart=1&preload=1&transparent=1"></iframe>
                     </div>
-                    <p>Os corais são como jardins coloridos no fundo do mar!</p>
+                    <p style="font-size: 1.8rem;">Os corais são como jardins coloridos no fundo do mar!</p>
                 </div>
                 
                 <div class="model-card">
@@ -472,7 +612,7 @@
                     <div class="model-container">
                         <iframe title="Peixe Palhaço - Clown Fish" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/39803206fdac446d86f6e8ab3a10510c/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
                     </div>
-                    <p>O peixe palhaço é tão colorido! Ele parece o Nemo!</p>
+                    <p style="font-size: 1.8rem;">O peixe palhaço é tão colorido! Ele parece o Nemo!</p>
                 </div>
                 
                 <div class="model-card">
@@ -480,30 +620,49 @@
                     <div class="model-container">
                         <iframe title="Graipuss_medusi steal_a_brainrot" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/acefa263305f4dfca534b066024fc94b/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
                     </div>
-                    <p>Essa medusa parece mágica! Ela brilha no escuro do oceano!</p>
+                    <p style="font-size: 1.8rem;">Essa medusa parece mágica! Ela brilha no escuro do oceano!</p>
                 </div>
             </div>
         </section>
         
         <section class="video-section">
             <h2 class="video-title">Vamos Aprender Mais!</h2>
-            <p style="font-size: 1.5rem; margin-bottom: 20px;">Assista a este vídeo super legal sobre os animais marinhos!</p>
+            <p style="font-size: 2.2rem; margin-bottom: 25px;">Assista a este vídeo super legal sobre os animais marinhos!</p>
             <div class="video-container">
                 <!-- Substitua o ID do vídeo pelo seu vídeo do YouTube -->
                 <iframe src="https://www.youtube.com/embed/3BSr7WkX8w4" title="Vídeo sobre Vida Marinha" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </section>
         
-        <section style="text-align: center; margin-top: 40px;">
-            <h2 style="font-size: 2.5rem; color: #ffcc00; margin-bottom: 20px; text-shadow: 2px 2px 0 #ff6600;">Vamos Brincar!</h2>
-            <button class="interactive-btn" onclick="createBubbles()">Criar Bolhas Mágicas! 🫧</button>
-            <button class="interactive-btn" onclick="makeFishSwim()">Fazer Peixes Nadarem! 🐠</button>
+        <section style="text-align: center; margin-top: 50px;">
+            <h2 style="font-size: 3.5rem; color: #ffcc00; margin-bottom: 30px; text-shadow: 3px 3px 0 #ff6600;">Vamos Brincar!</h2>
+            <button class="interactive-btn" onclick="createBubbles()">
+                <i class="fas fa-bubbles"></i> Criar Bolhas Mágicas!
+            </button>
+            <button class="interactive-btn" onclick="makeFishSwim()">
+                <i class="fas fa-fish"></i> Fazer Peixes Nadarem!
+            </button>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 2.5rem; color: #ffcc00; margin-bottom: 20px;">Nossos Ícones Especiais</h3>
+                <div class="custom-icon fish"></div>
+                <div class="custom-icon"></div>
+                <div class="custom-icon seashell"></div>
+                <div class="custom-icon"></div>
+                <div class="custom-icon fish"></div>
+            </div>
         </section>
     </div>
     
     <footer>
         <p>Feito com 💙 para todas as crianças que amam o mar!</p>
         <p>Vamos cuidar dos nossos amigos marinhos!</p>
+        
+        <div class="creator-info">
+            <p style="font-size: 1.6rem;">Criado por: Karty Willy</p>
+            <p style="font-size: 1.6rem;">Email: kartywillytdc@gmail.com</p>
+            <p style="font-size: 1.4rem; margin-top: 15px;">&copy; 2025 Mundo Marinho. Todos os direitos reservados.</p>
+        </div>
     </footer>
     
     <script>
@@ -520,42 +679,53 @@
         
         // Função para criar bolhas mágicas
         function createBubbles() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 15; i++) {
                 const bubble = document.createElement('div');
-                bubble.classList.add('bubble');
-                const size = Math.random() * 40 + 20;
+                bubble.classList.add('bubble-effect');
+                
+                const size = Math.random() * 60 + 30;
                 bubble.style.width = `${size}px`;
                 bubble.style.height = `${size}px`;
-                bubble.style.left = `${Math.random() * 100}%`;
-                bubble.style.top = `${Math.random() * 100}%`;
-                bubble.style.animationDuration = `${Math.random() * 4 + 3}s`;
+                
+                // Posição aleatória na parte inferior da tela
+                const leftPos = Math.random() * 100;
+                bubble.style.left = `${leftPos}%`;
+                bubble.style.bottom = `-${size}px`;
+                
+                // Duração aleatória da animação
+                const duration = Math.random() * 3 + 2;
+                bubble.style.animationDuration = `${duration}s`;
                 
                 document.body.appendChild(bubble);
                 
                 // Remover a bolha após a animação
                 setTimeout(() => {
-                    bubble.remove();
-                }, 7000);
+                    if (bubble.parentNode) {
+                        bubble.parentNode.removeChild(bubble);
+                    }
+                }, duration * 1000);
             }
         }
         
         // Função para fazer peixes nadarem
         function makeFishSwim() {
             const fishEmojis = ['🐠', '🐟', '🐡', '🦈', '🐬'];
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 8; i++) {
                 const fish = document.createElement('div');
                 fish.classList.add('fish');
                 fish.textContent = fishEmojis[Math.floor(Math.random() * fishEmojis.length)];
                 fish.style.top = `${Math.random() * 80 + 10}%`;
-                fish.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                fish.style.animationDuration = `${Math.random() * 15 + 10}s`;
                 fish.style.animationDelay = `${Math.random() * 5}s`;
                 
                 document.body.appendChild(fish);
                 
                 // Remover o peixe após a animação
                 setTimeout(() => {
-                    fish.remove();
-                }, 20000);
+                    if (fish.parentNode) {
+                        fish.parentNode.removeChild(fish);
+                    }
+                }, 25000);
             }
         }
         
@@ -578,6 +748,13 @@
             }, 2000);
         }
         
+        // Criar bolhas ao pressionar a tecla 'G'
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'g' || event.key === 'G') {
+                createBubbles();
+            }
+        });
+        
         // Iniciar a música automaticamente (com tratamento para autoplay policies)
         document.addEventListener('DOMContentLoaded', function() {
             // Tentar reproduzir a música após interação do usuário
@@ -587,6 +764,10 @@
                 });
                 document.body.removeEventListener('click', initAudio);
             });
+            
+            // Criar algumas bolhas iniciais
+            setTimeout(createBubbles, 1000);
+            setTimeout(createBubbles, 3000);
         });
     </script>
 </body>
