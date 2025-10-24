@@ -104,6 +104,53 @@
             line-height: 1.5;
         }
         
+        /* Seção de modelos 3D */
+        .models-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .model-card {
+            background: linear-gradient(to bottom right, #ff9966, #ff5e62);
+            border-radius: 20px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 4px solid #ffcc00;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .model-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 0 #ff6600;
+        }
+        
+        .model-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .model-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         /* Seção do vídeo */
         .video-section {
             text-align: center;
@@ -168,6 +215,12 @@
             100% { transform: translateX(calc(100vw + 100px)); }
         }
         
+        @keyframes popup {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
         /* Elementos decorativos */
         .bubble {
             position: absolute;
@@ -207,6 +260,59 @@
             box-shadow: 0 5px 0 #cc5200;
         }
         
+        /* Modelo 3D fixo no canto */
+        .fixed-model {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            z-index: 100;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 3px solid #ffcc00;
+        }
+        
+        .fixed-model iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .name-tag {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            font-size: 1rem;
+            border-radius: 5px;
+            font-family: 'Minecraft', monospace;
+        }
+        
+        /* Popup de bolha animada */
+        .bubble-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            z-index: 1000;
+            animation: popup 0.5s forwards;
+            display: none;
+        }
+        
+        .bubble-popup iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         /* Responsividade */
         @media (max-width: 768px) {
             h1 {
@@ -217,7 +323,7 @@
                 font-size: 1.5rem;
             }
             
-            .animal-card {
+            .animal-card, .model-card {
                 padding: 15px;
             }
             
@@ -225,12 +331,23 @@
                 font-size: 4rem;
             }
             
-            .animal-name {
+            .animal-name, .model-title {
                 font-size: 1.8rem;
             }
             
             .video-container iframe {
                 height: 300px;
+            }
+            
+            .fixed-model {
+                width: 150px;
+                height: 150px;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .models-section {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -253,6 +370,17 @@
     <div class="fish" style="top: 15%; animation-delay: 0s;">🐠</div>
     <div class="fish" style="top: 35%; animation-delay: 5s;">🐟</div>
     <div class="fish" style="top: 65%; animation-delay: 10s;">🐡</div>
+    
+    <!-- Popup de bolha animada -->
+    <div class="bubble-popup" id="bubblePopup">
+        <iframe title="Tralalero" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/87d8dc1c343f403398c759560503e06b/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
+    </div>
+    
+    <!-- Modelo 3D fixo no canto -->
+    <div class="fixed-model">
+        <iframe title="Tung Tung Sahur [NOT AI]" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/3577ea207ce647f2a3158f4c3235089d/embed?autostart=1&preload=1&transparent=1"></iframe>
+        <div class="name-tag">Tung Tung Sahur</div>
+    </div>
     
     <header>
         <h1>Mundo Marinho</h1>
@@ -304,6 +432,59 @@
             </div>
         </section>
         
+        <section>
+            <h2 style="text-align: center; font-size: 2.5rem; color: #ffcc00; margin: 40px 0 20px; text-shadow: 2px 2px 0 #ff6600;">Nossos Amigos em 3D!</h2>
+            <div class="models-section">
+                <div class="model-card">
+                    <h3 class="model-title">Tubarão Fofinho</h3>
+                    <div class="model-container">
+                        <iframe title="Plushie Shark" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/875414d5e45c42f9a5323ba8a8beed19/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
+                    </div>
+                    <p>Olha que tubarão fofinho! Ele parece um bichinho de pelúcia!</p>
+                </div>
+                
+                <div class="model-card">
+                    <h3 class="model-title">Orca Amigável</h3>
+                    <div class="model-container">
+                        <iframe title="SharkBite 2's Orca" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/8e88a7578a364647a0a89c7746f560ca/embed?autostart=1&preload=1&transparent=1"></iframe>
+                    </div>
+                    <p>Essa orca é super amigável! Ela adora brincar com seus amigos!</p>
+                </div>
+                
+                <div class="model-card">
+                    <h3 class="model-title">Arraia Voadora</h3>
+                    <div class="model-container">
+                        <iframe title="arraia manta" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/0604ee993d664d0c9773ec49532bd121/embed?autostart=1&preload=1&transparent=1"></iframe>
+                    </div>
+                    <p>A arraia parece que está voando na água! Que elegante!</p>
+                </div>
+                
+                <div class="model-card">
+                    <h3 class="model-title">Corais Coloridos</h3>
+                    <div class="model-container">
+                        <iframe title="Corals and Treasures" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/76c581a94313411ca6012455853f2f97/embed?autostart=1&preload=1&transparent=1"></iframe>
+                    </div>
+                    <p>Os corais são como jardins coloridos no fundo do mar!</p>
+                </div>
+                
+                <div class="model-card">
+                    <h3 class="model-title">Peixe Palhaço</h3>
+                    <div class="model-container">
+                        <iframe title="Peixe Palhaço - Clown Fish" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/39803206fdac446d86f6e8ab3a10510c/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
+                    </div>
+                    <p>O peixe palhaço é tão colorido! Ele parece o Nemo!</p>
+                </div>
+                
+                <div class="model-card">
+                    <h3 class="model-title">Medusa Mágica</h3>
+                    <div class="model-container">
+                        <iframe title="Graipuss_medusi steal_a_brainrot" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/acefa263305f4dfca534b066024fc94b/embed?autospin=1&autostart=1&preload=1&transparent=1"></iframe>
+                    </div>
+                    <p>Essa medusa parece mágica! Ela brilha no escuro do oceano!</p>
+                </div>
+            </div>
+        </section>
+        
         <section class="video-section">
             <h2 class="video-title">Vamos Aprender Mais!</h2>
             <p style="font-size: 1.5rem; margin-bottom: 20px;">Assista a este vídeo super legal sobre os animais marinhos!</p>
@@ -314,7 +495,7 @@
         </section>
         
         <section style="text-align: center; margin-top: 40px;">
-            <h2 style="font-size: 2.5rem; color: #ffcc00; margin-bottom: 20px;">Vamos Brincar!</h2>
+            <h2 style="font-size: 2.5rem; color: #ffcc00; margin-bottom: 20px; text-shadow: 2px 2px 0 #ff6600;">Vamos Brincar!</h2>
             <button class="interactive-btn" onclick="createBubbles()">Criar Bolhas Mágicas! 🫧</button>
             <button class="interactive-btn" onclick="makeFishSwim()">Fazer Peixes Nadarem! 🐠</button>
         </section>
@@ -376,6 +557,25 @@
                     fish.remove();
                 }, 20000);
             }
+        }
+        
+        // Popup de bolha animada ao rolar
+        let popupShown = false;
+        
+        window.addEventListener('scroll', function() {
+            if (!popupShown && window.scrollY > 500) {
+                showBubblePopup();
+                popupShown = true;
+            }
+        });
+        
+        function showBubblePopup() {
+            const popup = document.getElementById('bubblePopup');
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 2000);
         }
         
         // Iniciar a música automaticamente (com tratamento para autoplay policies)
