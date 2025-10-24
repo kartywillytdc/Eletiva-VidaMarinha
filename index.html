@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Marinho - Uma Aventura no Fundo do Mar!</title>
+    <style>
+        /* Estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #1a6fb0, #0a4a7a);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-bottom: 5px solid #ffcc00;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            text-shadow: 3px 3px 0 #ff6600, 6px 6px 0 #ffcc00;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite alternate;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+        
+        /* Conteúdo principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+            border: 3px dashed #ffcc00;
+        }
+        
+        /* Seção de animais */
+        .animals-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .animal-card {
+            background: linear-gradient(to bottom right, #4ecdc4, #44a08d);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 4px solid #ffcc00;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animal-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .animal-icon {
+            font-size: 5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .animal-name {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 0 #ff6600;
+        }
+        
+        .animal-fact {
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+        
+        /* Seção do vídeo */
+        .video-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        
+        .video-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-shadow: 2px 2px 0 #ff6600;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 5px solid #ffcc00;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+            border-top: 5px solid #ffcc00;
+        }
+        
+        footer p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Animações */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes swim {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+        
+        /* Elementos decorativos */
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        .fish {
+            position: absolute;
+            font-size: 2rem;
+            animation: swim 15s linear infinite;
+        }
+        
+        /* Botões interativos */
+        .interactive-btn {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 0 #cc5200;
+        }
+        
+        .interactive-btn:hover {
+            background-color: #ff8533;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 0 #cc5200;
+        }
+        
+        .interactive-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 0 #cc5200;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .animal-card {
+                padding: 15px;
+            }
+            
+            .animal-icon {
+                font-size: 4rem;
+            }
+            
+            .animal-name {
+                font-size: 1.8rem;
+            }
+            
+            .video-container iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Áudio de fundo -->
+    <audio id="background-music" loop autoplay>
+        <source src="eletiva.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    
+    <!-- Bolhas decorativas -->
+    <div class="bubble" style="width: 40px; height: 40px; top: 10%; left: 5%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 60px; height: 60px; top: 20%; left: 80%; animation-delay: 1s;"></div>
+    <div class="bubble" style="width: 30px; height: 30px; top: 40%; left: 15%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 50px; height: 50px; top: 60%; left: 70%; animation-delay: 3s;"></div>
+    <div class="bubble" style="width: 35px; height: 35px; top: 80%; left: 25%; animation-delay: 4s;"></div>
+    
+    <!-- Peixes nadando -->
+    <div class="fish" style="top: 15%; animation-delay: 0s;">🐠</div>
+    <div class="fish" style="top: 35%; animation-delay: 5s;">🐟</div>
+    <div class="fish" style="top: 65%; animation-delay: 10s;">🐡</div>
+    
+    <header>
+        <h1>Mundo Marinho</h1>
+        <p class="subtitle">Uma Aventura no Fundo do Mar!</p>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <p>Olá, amiguinho! Vamos mergulhar juntos no incrível mundo dos animais marinhos!</p>
+            <p>Aqui no fundo do mar existem criaturas mágicas, coloridas e muito interessantes!</p>
+            <button class="interactive-btn" onclick="toggleMusic()">🎵 Ligar/Desligar Música</button>
+        </section>
+        
+        <section class="animals-section">
+            <div class="animal-card">
+                <span class="animal-icon">🐬</span>
+                <h2 class="animal-name">Golfinho</h2>
+                <p class="animal-fact">Os golfinhos são super inteligentes e adoram brincar! Eles têm um nome especial para cada amigo golfinho!</p>
+            </div>
+            
+            <div class="animal-card">
+                <span class="animal-icon">🐙</span>
+                <h2 class="animal-name">Polvo</h2>
+                <p class="animal-fact">Os polvos têm três corações e podem mudar de cor para se esconder dos perigos! Que mágico!</p>
+            </div>
+            
+            <div class="animal-card">
+                <span class="animal-icon">🦀</span>
+                <h2 class="animal-name">Caranguejo</h2>
+                <p class="animal-fact">Os caranguejos andam de lado e têm uma casca dura que protege seu corpinho. Eles são os reis da praia!</p>
+            </div>
+            
+            <div class="animal-card">
+                <span class="animal-icon">🐢</span>
+                <h2 class="animal-name">Tartaruga Marinha</h2>
+                <p class="animal-fact">As tartarugas marinhas podem viver mais de 100 anos! Elas nadam por oceanos inteiros durante sua vida.</p>
+            </div>
+            
+            <div class="animal-card">
+                <span class="animal-icon">🦈</span>
+                <h2 class="animal-name">Tubarão</h2>
+                <p class="animal-fact">Os tubarões têm dentes que nunca param de crescer! Mas a maioria deles é bem tranquila, não como nos filmes!</p>
+            </div>
+            
+            <div class="animal-card">
+                <span class="animal-icon">🐋</span>
+                <h2 class="animal-name">Baleia</h2>
+                <p class="animal-fact">As baleias são os maiores animais do planeta! Elas cantam músicas lindas que viajam por todo o oceano.</p>
+            </div>
+        </section>
+        
+        <section class="video-section">
+            <h2 class="video-title">Vamos Aprender Mais!</h2>
+            <p style="font-size: 1.5rem; margin-bottom: 20px;">Assista a este vídeo super legal sobre os animais marinhos!</p>
+            <div class="video-container">
+                <!-- Substitua o ID do vídeo pelo seu vídeo do YouTube -->
+                <iframe src="https://www.youtube.com/embed/3BSr7WkX8w4" title="Vídeo sobre Vida Marinha" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+        
+        <section style="text-align: center; margin-top: 40px;">
+            <h2 style="font-size: 2.5rem; color: #ffcc00; margin-bottom: 20px;">Vamos Brincar!</h2>
+            <button class="interactive-btn" onclick="createBubbles()">Criar Bolhas Mágicas! 🫧</button>
+            <button class="interactive-btn" onclick="makeFishSwim()">Fazer Peixes Nadarem! 🐠</button>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Feito com 💙 para todas as crianças que amam o mar!</p>
+        <p>Vamos cuidar dos nossos amigos marinhos!</p>
+    </footer>
+    
+    <script>
+        // Controle da música de fundo
+        const backgroundMusic = document.getElementById('background-music');
+        
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            } else {
+                backgroundMusic.pause();
+            }
+        }
+        
+        // Função para criar bolhas mágicas
+        function createBubbles() {
+            for (let i = 0; i < 10; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                const size = Math.random() * 40 + 20;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.top = `${Math.random() * 100}%`;
+                bubble.style.animationDuration = `${Math.random() * 4 + 3}s`;
+                
+                document.body.appendChild(bubble);
+                
+                // Remover a bolha após a animação
+                setTimeout(() => {
+                    bubble.remove();
+                }, 7000);
+            }
+        }
+        
+        // Função para fazer peixes nadarem
+        function makeFishSwim() {
+            const fishEmojis = ['🐠', '🐟', '🐡', '🦈', '🐬'];
+            for (let i = 0; i < 5; i++) {
+                const fish = document.createElement('div');
+                fish.classList.add('fish');
+                fish.textContent = fishEmojis[Math.floor(Math.random() * fishEmojis.length)];
+                fish.style.top = `${Math.random() * 80 + 10}%`;
+                fish.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                fish.style.animationDelay = `${Math.random() * 5}s`;
+                
+                document.body.appendChild(fish);
+                
+                // Remover o peixe após a animação
+                setTimeout(() => {
+                    fish.remove();
+                }, 20000);
+            }
+        }
+        
+        // Iniciar a música automaticamente (com tratamento para autoplay policies)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tentar reproduzir a música após interação do usuário
+            document.body.addEventListener('click', function initAudio() {
+                backgroundMusic.play().catch(e => {
+                    console.log('Reprodução automática bloqueada. Use o botão para iniciar a música.');
+                });
+                document.body.removeEventListener('click', initAudio);
+            });
+        });
+    </script>
+</body>
+</html>
